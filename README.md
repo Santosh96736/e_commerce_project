@@ -22,7 +22,7 @@
 
 ## 3. DATABASE SCHEMA
 >  |**Table Name**|  **Column Name**|
->  |--------------|-----------------------------------------------------------------------------------------------------------------------|
+>  |--------------|-----------------|
 >  | **Customer** | `customer_id`, `customer_unique_id` , `customer_zip_code_prefix`, `customer_city`, `customer_state`|
 >  | **Geolocation** | `geolocation_zip_code_prefix` , `geolocation_lat`, `geolocation_lng`, `geolocation_city`, `geolocation_state`|
 >  | **Order_Items** | `order_id`, `order_item_id`, `product_id`, `seller_id`, `shipping_limit_date`, `price`, `freight_value`|
@@ -130,9 +130,9 @@
 
 ```python
 # Cleaning Orders & Customers Data
-- Remove duplicates
-- Handle missing values
-- Convert date formats
+# - Remove duplicates
+# - Handle missing values
+# - Convert date formats
 
 import pandas as pd
 
@@ -360,5 +360,7 @@ plt.show()
 *  ii. **Download Dataset** : [e-Commerce (Target) Sales Dataset - Kaggle](https://www.kaggle.com/datasets/devarajv88/target-dataset)
 *  ⚠️ Note: The file order_reviews.csv has been removed from the dataset by the original author. If anyone wanted to the file can download from my github repository.
 *  iii. **Download Missing File** : [order_review.csv](https://github.com/Santosh96736/e_commerce_project/blob/main/order_reviews.csv)
-*  iv. **Contact** : [santosh kumar sahu](santosh96736@gmail.com)
+*  iv. **All SQL Queries** : [ecommerce_project.sql](https://github.com/Santosh96736/e_commerce_project/blob/main/ecommer_project.sql)
+*  v. **All Python Codes** : [ecommerce_project_code.ipynb](https://github.com/Santosh96736/e_commerce_project/blob/main/ecommerce_project_code.ipynb)
+*  vi. **Contact** : [santosh kumar sahu](santosh96736@gmail.com)
 
