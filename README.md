@@ -343,5 +343,13 @@ plt.title("Top 3 spending customer per year", fontsize = 20, fontweight = "bold"
 plt.grid(axis = "y", linestyle = "--", alpha = 0.7)
 
 plt.show()
-![image](https://github.com/user-attachments/assets/b58ff525-1649-4ebd-931b-40ca2f4d98a0)
 ```
+![top 3 spending customer](https://github.com/Santosh96736/e_commerce_project/blob/main/top%203%20spending%20customers.png)
+
+## 6. KEY FINDINGS 
+*  i. **Orders placed in 2017** : 45101
+*  ii. **Percentage of orders paid through credit card** : 73.92%
+*  iii. **Correlation between price and number of purchases** : -0.10
+*  iv. **Year Over Year Growth Rate** : in 2017 the growth rate is 12112.70% and in 2018 the growth rate is 20.00%
+*  v. **Retetion Rate** : 0
+
