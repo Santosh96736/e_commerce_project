@@ -344,7 +344,7 @@ plt.grid(axis = "y", linestyle = "--", alpha = 0.7)
 
 plt.show()
 ```
-![top 3 spending customer](https://github.com/Santosh96736/e_commerce_project/blob/main/top%203%20spending%20customers.png)
+![top 3 spending customer](https://raw.githubusercontent.com/Santosh96736/e_commerce_project/refs/heads/main/top%203%20spending%20customers.png)
 
 ## 6. KEY FINDINGS 
 *  i. **Orders placed in 2017** : 45101
@@ -352,4 +352,8 @@ plt.show()
 *  iii. **Correlation between price and number of purchases** : -0.10
 *  iv. **Year Over Year Growth Rate** : in 2017 the growth rate is 12112.70% and in 2018 the growth rate is 20.00%
 *  v. **Retetion Rate** : 0
+
+## 7. REPOSITORY DETAILS
+*  i. **Repository Name** : e_commerce_project
+*  ii. **Data** : 
 
