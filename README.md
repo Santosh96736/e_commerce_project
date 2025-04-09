@@ -10,15 +10,15 @@
 7. [REPOSITORY DETAILS](REPOSITORY-DETAILS)
 
 ## 1. PROJECT OVERVIEW
-*   This project involves deep analysis of e_commerce_dataset to derive valuable
-    business insights using python and MySQL.
+*   This project involves deep analysis of e_commerce dataset to derive meaningful
+    business insights using python, MySQL, and data visualization tools like Seaborn and matplotlib.
 
 
 ## 2. PROJECT OBJECTIVE
-*    **Clean data** : Use python to clean data
-*    **Uplode data** : Use python code to upload data into MySQL 
-*    **Query data** : Query data using MySQL and python
-*    **Visualize data** : Visualize data using python seaborn and matplotlib
+*    **Clean data** : Handle missing value, duplicates, and formatting using Python.
+*    **Upload data** : Load the cleaned dataset into MySQL 
+*    **Query data** : Use MySQL and Python for analysis
+*    **Visualize data** : Create graphs and charts using Seaborn and Matplotlib
 
 ## 3. DATABASE SCHEMA
 >  |**Table Name**|  **Column Name**|
@@ -59,7 +59,7 @@
     );
     ```
 
-### EASY 
+### EASY QUERIES
 
 *   ```sql
     -- LIST ALL UNIQUE CITIES WHERE CUSTOMERS ARE LOCATED
@@ -74,7 +74,7 @@
     WHERE YEAR(order_purchase_timestamp) = 2017;
     ```
     
-### INTERMEDIATE
+### INTERMEDIATE QUERIES
 * ```sql
     -- CALCULATE THE NUMBER OF ORDERS PER MONTH IN 2018 
 
@@ -99,7 +99,7 @@
     ORDER BY avg_orders DESC;
   ```
 
-### HARD
+### HARD QUERIES
 *  ```sql
     -- CALCULATE THE MOVING AVERAGE OF ORDER VALUES FOR EACH CUSTOMER OVER THEIR ORDER HISTORY
 
@@ -125,7 +125,9 @@
     ```
 
 ## 5. JUPYTER CODE
-### LOADING, CLEANING DATA, AND UPLOADING CLEANED DATA
+
+### DATA CLEANING
+
 ```python
 # Cleaning Orders & Customers Data
 - Remove duplicates
@@ -194,7 +196,7 @@ df_customers.to_csv("cleaned_customers.csv", index= False)
 print("\n" + "-" * 60)
 ```
 
-### Uploading Data Into MySQl
+### UPLOADING DATA INTO MYSQL
 ```python
 import pandas as pd
 import mysql.connector
@@ -337,7 +339,7 @@ for container in ax.containers:
 plt.xticks(rotation = 90)
 
 plt.xlabel("Customer ID", fontsize = 15)
-plt.ylabel("Amount Spend By Customer", fontsize = 15)
+plt.ylabel("Amount Spent By Customer", fontsize = 15)
 plt.title("Top 3 spending customer per year", fontsize = 20, fontweight = "bold")
 
 plt.grid(axis = "y", linestyle = "--", alpha = 0.7)
@@ -348,15 +350,15 @@ plt.show()
 
 ## 6. KEY FINDINGS 
 *  i. **Orders placed in 2017** : 45101
-*  ii. **Percentage of orders paid through credit card** : 73.92%
-*  iii. **Correlation between price and number of purchases** : -0.10
-*  iv. **Year Over Year Growth Rate** : in 2017 the growth rate is 12112.70% and in 2018 the growth rate is 20.00%
+*  ii. **Percentage paid via credit card** : 73.92%
+*  iii. **Correlation between Price-Purchases** : -0.10
+*  iv. **Year-Over-Year Growth Rate** : 12112.70% (2017), 20.00% (2018)
 *  v. **Retetion Rate** : 0
 
 ## 7. REPOSITORY DETAILS
 *  i. **Repository Name** : e_commerce_project
-*  ii. **Download Repository** : [e-Commerce (Target) Sales Dataset](https://www.kaggle.com/datasets/devarajv88/target-dataset)
-*  ⚠️ Note: The file order_reviews.csv has been removed from the dataset by the original author. If anyone want the file they can download from my github repository.
+*  ii. **Download Dataset** : [e-Commerce (Target) Sales Dataset - Kaggle](https://www.kaggle.com/datasets/devarajv88/target-dataset)
+*  ⚠️ Note: The file order_reviews.csv has been removed from the dataset by the original author. If anyone wanted to the file can download from my github repository.
 *  iii. **Download Missing File** : [order_review.csv](https://github.com/Santosh96736/e_commerce_project/blob/main/order_reviews.csv)
-*  iv. **Mail** : [santosh kumar sahu](https://mail.google.com/mail/u/0/#inbox)
+*  iv. **Contact** : [santosh kumar sahu](santosh96736@gmail.com)
 
