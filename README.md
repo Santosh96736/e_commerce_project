@@ -357,10 +357,8 @@ plt.show()
 
 ## 7. REPOSITORY DETAILS
 *  i. **Repository Name** : e_commerce_project
-*  ii. **Download Dataset** : [e-Commerce (Target) Sales Dataset - Kaggle](https://www.kaggle.com/datasets/devarajv88/target-dataset)
-*  ⚠️ Note: The file order_reviews.csv has been removed from the dataset by the original author. If anyone wanted to the file can download from my github repository.
-*  iii. **Download Missing File** : [order_review.csv](https://github.com/Santosh96736/e_commerce_project/blob/main/order_reviews.csv)
-*  iv. **All SQL Queries** : [ecommerce_project.sql](https://github.com/Santosh96736/e_commerce_project/blob/main/ecommer_project.sql)
-*  v. **All Python Codes** : [ecommerce_project_code.ipynb](https://github.com/Santosh96736/e_commerce_project/blob/main/ecommerce_project_code.ipynb)
-*  vi. **Contact** : [santosh kumar sahu](santosh96736@gmail.com)
+*  ii. **Download Dataset** : [e-Commerce (Target) Sales Dataset - Kaggle](https://www.kaggle.com/datasets/ujjwalinsights/target-case-study-using-sql)
+*  iii. **All SQL Queries** : [ecommerce_project.sql](https://github.com/Santosh96736/e_commerce_project/blob/main/ecommer_project.sql)
+*  iv. **All Python Codes** : [ecommerce_project_code.ipynb](https://github.com/Santosh96736/e_commerce_project/blob/main/ecommerce_project_code.ipynb)
+*  v. **Contact** : [santosh kumar sahu](santosh96736@gmail.com)
 
