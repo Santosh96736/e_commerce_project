@@ -355,5 +355,8 @@ plt.show()
 
 ## 7. REPOSITORY DETAILS
 *  i. **Repository Name** : e_commerce_project
-*  ii. **Data** : 
+*  ii. **Download Repository** : [e-Commerce (Target) Sales Dataset](https://www.kaggle.com/datasets/devarajv88/target-dataset)
+*  ⚠️ Note: The file order_reviews.csv has been removed from the dataset by the original author. If anyone want the file they can download from my github repository.
+*  iii. **Download Missing File** :
+*  iv. **Mail** : [santosh96736](https://mail.google.com/mail/u/0/#inbox)
 
