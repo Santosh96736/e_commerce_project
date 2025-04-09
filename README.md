@@ -1,6 +1,6 @@
 # e_commerce_project
 
-## TABLE CONTENTA
+## TABLE CONTENTS
 1. [PROJECT OVERVIEW](PROJECT-OVERVIEW)
 2. [PROJECT OBJECTIVE](PROJECT-OBJECTIVE)
 3. [DATABASE SCHEMA](DATABASE-SCHEMA)
@@ -10,7 +10,7 @@
 7. [REPOSITORY DETAILS](REPOSITORY-DETAILS)
 
 ## 1. PROJECT OVERVIEW
-*   This project invovles deep analysis of e_commerce_datase to derieve valueable
+*   This project involves deep analysis of e_commerce_dataset to derive valuable
     business insights using python and MySQL.
 
 
@@ -57,90 +57,6 @@
     geolocation_state VARCHAR(5),
     PRIMARY KEY (geolocation_zip_code_prefix, geolocation_lat, geolocation_lng)
     );
-    
-    
-    CREATE TABLE sellers(
-    seller_id VARCHAR(35),
-    seller_zip_code_prefix INT,
-    seller_city VARCHAR(40),
-    seller_state VARCHAR(5),
-    PRIMARY KEY (seller_id)
-    );
-
-
-    CREATE TABLE customers(
-    customer_id VARCHAR(35),
-    customer_unique_id VARCHAR(35),
-    customer_zip_code_prefix INT,
-    customer_city VARCHAR(35),
-    customer_state VARCHAR(5),
-    PRIMARY KEY (customer_id)
-    );
-
-
-    CREATE TABLE products(
-    product_id VARCHAR(35),
-    product_category VARCHAR(50),
-    product_name_length INT,
-    product_description_length INT,
-    product_photos_qty INT,
-    product_weight_g INT,
-    product_length_cm INT,
-    product_height_cm INT,
-    product_width_cm INT,
-    PRIMARY KEY (product_id)
-    );
-
-    CREATE TABLE orders(
-    order_id VARCHAR(35),
-    customer_id VARCHAR(35),
-    order_status ENUM('delivered', 'invoiced', 'shipped', 'processing', 'unavailable', 'canceled', 'created', 'approved'),
-    order_purchase_timestamp DATETIME,
-    order_approved_at DATETIME,
-    order_delivered_carrier_date DATETIME,
-    order_delivered_customer_date DATETIME,
-    order_estimated_delivery_date DATETIME,
-    PRIMARY KEY (order_id),
-    FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
-    );
-
-
-    CREATE TABLE order_items(
-    order_id VARCHAR(35),
-    order_item_id INT,
-    product_id VARCHAR(35),
-    seller_id VARCHAR(35),
-    shipping_limit_date DATETIME,
-    price DECIMAL(10,2),
-    freight_value DECIMAL(10,2),
-    PRIMARY KEY (order_id, order_item_id),
-    FOREIGN KEY (order_id) REFERENCES orders(order_id),
-    FOREIGN KEY (product_id) REFERENCES products(product_id),
-    FOREIGN KEY (seller_id) REFERENCES sellers(seller_id)
-    );
-
-
-    CREATE TABLE order_reviews(
-    review_id VARCHAR(35),                 
-    order_id VARCHAR(35),                 
-    review_score INT CHECK(review_score BETWEEN 1 AND 5),             
-    review_comment_title VARCHAR(45),
-    review_creation_date DATETIME,
-    review_answer_timestamp DATETIME,
-    PRIMARY KEY (review_id),
-    FOREIGN KEY (order_id) REFERENCES orders(order_id)
-    );
-
-
-    CREATE TABLE payments(
-    order_id VARCHAR(35),
-    payment_sequential INT,
-    payment_type ENUM('credit_card', 'UPI', 'voucher', 'debit_card', 'not_defined'),
-    payment_installments INT,
-    payment_value DECIMAL(10,2),
-    PRIMARY KEY (order_id, payment_sequential),
-    FOREIGN KEY (order_id) REFERENCES orders(order_id)
-    );
     ```
 
 ### EASY 
@@ -156,31 +72,6 @@
     SELECT COUNT(*) AS total_orders
     FROM orders
     WHERE YEAR(order_purchase_timestamp) = 2017;
-
-    -- FIND TOTAL SALES PER CATEGORY
-
-    WITH payment_data AS (SELECT oi.product_id, SUM(p.payment_value) AS sales
-    FROM payments AS p
-    JOIN order_items AS oi ON p.order_id = oi.order_id
-    GROUP BY oi.product_id)
-
-    SELECT LOWER(product_category) AS category, SUM(sales) AS sales
-    FROM payment_data AS pd
-    JOIN products AS p ON p.product_id = pd.product_id
-    GROUP BY product_category;
-
-
-    -- CALCULATE THE PERCENTAGE OF ORDERS THAT WERE PAID THROUGH CREDIT-CARD
-
-    SELECT CONCAT(ROUND(((SELECT COUNT(payment_type) FROM payments WHERE payment_type = "credit_card")/ COUNT(*)) * 100,2),"%") AS percentage
-    FROM payments;
-
-
-    -- CALCULATE NUMBER OF CUSTOMERS IN EACH CITY
-
-    SELECT customer_city, COUNT(customer_id) AS total_customer
-    FROM customers
-    GROUP BY customer_city;
     ```
     
 ### INTERMEDIATE
@@ -206,38 +97,6 @@
     JOIN count_per_order AS cpo ON c.customer_id = cpo.customer_id
     GROUP BY city
     ORDER BY avg_orders DESC;
-
-    -- CALCULATE THE PERCENTAGE OF TOTAL REVENUE CONTRIBUTED BY EACH PRODUCT CATEGORY
-
-    WITH payment_data AS (SELECT oi.product_id, SUM(p.payment_value) AS sales
-    FROM payments AS p
-    JOIN order_items AS oi ON p.order_id = oi.order_id
-    GROUP BY oi.product_id)
-
-    SELECT LOWER(product_category) AS category, 
-         ROUND((SUM(sales) / (SELECT SUM(payment_value) FROM payments)) * 100,2) AS sales_percentage
-    FROM payment_data AS pd
-    JOIN products AS p ON p.product_id = pd.product_id
-    GROUP BY category
-    ORDER BY sales_percentage DESC;
-
-
-    -- IDENTIFY THE CORRELATION BETWEEN PRODUCT PRICE AND THE NUMBER OF TIMES A PRODUCT HAS BEEN PURCHASED
-
-    SELECT LOWER(p.product_category) AS category, COUNT(oi.order_id) AS order_count, ROUND(AVG(oi.price),2) AS price
-    FROM products AS p
-    JOIN order_items AS oi ON p.product_id = oi.product_id
-    GROUP BY category;
-
-    -- CALCULATE THE TOAL REVENUE GENERATED BY EACH SELLER, AND RANK THEM BY REVENUE
-
-    SELECT seller_id, revenue,
-           DENSE_RANK() OVER(ORDER BY revenue DESC) AS seller_rank
-    FROM (SELECT oi.seller_id, SUM(p.payment_value) AS revenue
-    FROM order_items AS oi
-    JOIN payments AS p ON oi.order_id = p.order_id
-    GROUP BY oi.seller_id) AS revenue_data
-    LIMIT 10;
   ```
 
 ### HARD
@@ -263,50 +122,226 @@
     JOIN payments AS p ON o.order_id = p.order_id
     GROUP BY year,month_number,month_name
     ORDER BY year, month_number,month_name) AS sales_value_data;
-
-
-    -- CALCULATE THE YEAR-OVER-YEAR GROWTH RATE OF TOTAL SALES
-
-     SELECT year, 
-		    ROUND(((sales_value - LAG(sales_value) OVER(ORDER BY year))/ LAG(sales_value) OVER(ORDER BY year)) * 100,2) AS yoy_growth
-     FROM(SELECT YEAR(o.order_purchase_timestamp) AS year, SUM(p.payment_value) AS sales_value
-     FROM orders AS o
-     JOIN payments AS p ON o.order_id = p.order_id
-     GROUP BY year) AS sales_value_data;
- 
-    -- CALCULATE THE RETENTION RATE OF CUSTOMERS, DEFINED AS THE PERCENTAGE OF OF CUSTOMER WHO MAKE ANOTHER PUCHASE 
-       WITHIN 6 MONTHS OF THEIR FIRST PURCHASE 
-
-    WITH first_order_customer AS 
-    (SELECT c.customer_id, MIN(o.order_purchase_timestamp) AS first_order
-    FROM customers AS c
-    JOIN orders AS o ON c.customer_id = o.customer_id
-    GROUP BY c.customer_id),
-
-    repeat_order_customer AS 
-    (SELECT o.customer_id
-    FROM orders AS o
-    JOIN first_order_customer AS f ON o.customer_id = f.customer_id
-                               AND o.order_purchase_timestamp > f.first_order
-                               AND o.order_purchase_timestamp <= DATE_ADD(f.first_order, INTERVAL 6 MONTH))
-
-    SELECT ROUND((COUNT(DISTINCT r.customer_id) / COUNT(DISTINCT f.customer_id)) * 100,2) AS retention_rate
-    FROM repeat_order_customer AS r
-    JOIN first_order_customer AS f ON r.customer_id = f.customer_id;
-
-
-    -- IDENTIFY THE TOP 3 CUSTOMERS WHO SPENT THE MOST MONEY IN EACH YEAR
-
-    WITH customer_rank_data AS (SELECT year, customer, amount_spent,
-           DENSE_RANK() OVER(PARTITION BY year ORDER BY amount_spent DESC) AS customer_rank
-    FROM (SELECT YEAR(o.order_purchase_timestamp) AS year,o.customer_id AS customer, SUM(p.payment_value) AS amount_spent
-    FROM orders AS o
-    JOIN payments AS p ON o.order_id = p.order_id
-    GROUP BY year,o.customer_id
-    ORDER BY year) AS speding_data)
-
-    SELECT year, customer, amount_spent
-    FROM customer_rank_data
-    WHERE customer_rank <= 3;
     ```
 
+## 5. JUPYTER CODE
+### LOADING, CLEANING DATA, AND UPLOADING CLEANED DATA
+```python
+# Cleaning Orders & Customers Data
+- Remove duplicates
+- Handle missing values
+- Convert date formats
+
+import pandas as pd
+
+# Load Dataset
+df_orders = pd.read_csv("orders.csv")
+df_customers = pd.read_csv("customers.csv")
+
+# Convert relevant columns to datetime format
+
+df_orders["order_purchase_timestamp"] = pd.to_datetime(df_orders["order_purchase_timestamp"])
+df_orders["order_approved_at"] = pd.to_datetime(df_orders["order_approved_at"])
+df_orders["order_delivered_carrier_date"] = pd.to_datetime(df_orders["order_delivered_carrier_date"])
+df_orders["order_delivered_customer_date"] = pd.to_datetime(df_orders["order_delivered_customer_date"])
+df_orders["order_estimated_delivery_date"] = pd.to_datetime(df_orders["order_estimated_delivery_date"])
+
+# Function to check dataset summary
+def check_dataset(df, name):
+    print("\n" + "=" * 60)
+    print(f"Dataset Summary: {name}")
+    print("=" * 60)
+
+    print(f"\n Missing Values:\n{df.isnull().sum()}")
+    print(f"\n Duplicate Rows: {df.duplicated().sum()}")
+    
+    print("\n Dataset Info:")
+    df.info()
+    
+    print("\n Statistical Summary:")
+    print(df.describe())
+
+
+# Check orders dataset
+check_dataset(df_orders, "Orders")
+
+# Checking Null Values where order_status == "shipped"
+shipped_missing = df_orders[df_orders["order_status"] == "shipped"].isnull().sum()
+print("\nMissing values in 'shipped' orders:")
+print(shipped_missing)
+
+# Fill missing "order_delivered_customer_date" with "order_estimated_delivery_date" only for shipped orders
+df_orders.loc[(df_orders["order_status"] == "shipped") & 
+              (df_orders["order_delivered_customer_date"].isnull()), 
+              "order_delivered_customer_date"] = df_orders["order_estimated_delivery_date"]
+
+# Re-check missing values to confirm they are correctly filled
+shipped_missing_after = df_orders[df_orders["order_status"] == "shipped"].isnull().sum()
+print("\nMissing values in 'shipped' orders after filling:")
+print(shipped_missing_after)
+
+# Upload cleaned "df_orders" into "cleaned_orders.csv"
+df_orders.to_csv("cleaned_orders.csv", index= False)
+
+print("\n" + "-" * 60)
+
+# Check customers dataset
+check_dataset(df_customers, "Customers")
+
+# Upload cleaned "df_customers" into "cleaned_customer.csv"
+df_customers.to_csv("cleaned_customers.csv", index= False)
+
+print("\n" + "-" * 60)
+```
+
+### Uploading Data Into MySQl
+```python
+import pandas as pd
+import mysql.connector
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+# List of CSV files and their corresponding table names
+csv_files = [
+    ('cleaned_customers.csv', 'customers'),
+    ('cleaned_orders.csv', 'orders'),
+    ('cleaned_sellers.csv', 'sellers'),
+    ('cleaned_products.csv', 'products'),
+    ('cleaned_order_items.csv', 'order_items'),
+    ('cleaned_payments.csv', 'payments'),
+    ('cleaned_geolocation.csv', 'geolocation'),
+    ('cleaned_order_reviews.csv', 'order_reviews')
+]
+
+# Connect to the MySQL database
+conn = mysql.connector.connect(
+    host= os.getenv("DB_HOST"),
+    user= os.getenv("DB_USER"),
+    password= os.getenv("DB_PASSWORD"),
+    database= os.getenv("DB_NAME")
+)
+cursor = conn.cursor()
+
+# Folder containing the CSV files
+folder_path = 'D:/E_Commerce_Project'
+
+# Function to determine SQL data type
+def get_sql_type(column_name, dtype):
+    if "geolocation_lat" in column_name or "geolocation_lng" in column_name:
+        return 'DECIMAL(18,15)'  # High precision for latitude & longitude
+    elif pd.api.types.is_integer_dtype(dtype):
+        return 'INT'
+    elif pd.api.types.is_float_dtype(dtype):
+        return 'DECIMAL(10,2)'  # General decimal format for prices, weights, etc.
+    elif pd.api.types.is_datetime64_any_dtype(dtype):
+        return 'DATETIME'
+    else:
+        return 'VARCHAR(50)'  # Default VARCHAR
+
+# Process each CSV file
+for csv_file, table_name in csv_files:
+    file_path = os.path.join(folder_path, csv_file)
+    
+    # Read the CSV file into a pandas DataFrame
+    df = pd.read_csv(file_path)
+    
+    # Replace NaN with None to handle SQL NULL values
+    df = df.where(pd.notnull(df), None)
+
+    # Debugging: Check for NaN values
+    print(f"Processing {csv_file}")
+    print(f"NaN values before replacement:\n{df.isnull().sum()}\n")
+
+    # Clean column names to match MySQL naming conventions
+    df.columns = [col.replace(' ', '_').replace('-', '_').replace('.', '_') for col in df.columns]
+
+    # Convert ENUM columns to lowercase and validate values
+    if 'order_status' in df.columns:
+        df['order_status'] = df['order_status'].str.lower().str.strip()
+        valid_status = {'delivered', 'invoiced', 'shipped', 'processing', 'unavailable', 'canceled', 'created', 'approved'}
+        df = df[df['order_status'].isin(valid_status)]  # Remove invalid values
+
+    if 'payment_type' in df.columns:
+        df['payment_type'] = df['payment_type'].str.lower().str.strip()
+        valid_payment = {'credit_card', 'upi', 'voucher', 'debit_card', 'not_defined'}
+        df = df[df['payment_type'].isin(valid_payment)]
+
+    # Insert DataFrame data into the MySQL table
+    for _, row in df.iterrows():
+        values = tuple(None if pd.isna(x) else x for x in row)
+        sql = f"INSERT INTO `{table_name}` ({', '.join(['`' + col + '`' for col in df.columns])}) VALUES ({', '.join(['%s'] * len(row))})"
+        
+        try:
+            cursor.execute(sql, values)
+        except mysql.connector.Error as err:
+            print(f"Error inserting into {table_name}: {err}")
+    
+    # Commit the transaction for the current CSV file
+    conn.commit()
+
+# Close the connection
+conn.close()
+print("✅ Data Upload Completed Successfully!")
+```
+
+### CONNECTING TO MySQL
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import mysql.connector
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+mydb = mysql.connector.connect(host = os.getenv("DB_HOST"),
+                               user = os.getenv("DB_USER"),
+                               password = os.getenv("DB_PASSWORD"),
+                               database = os.getenv("DB_NAME"))
+
+cur = mydb.cursor()
+```
+
+### IDENTIFY THE TOP 3 CUSTOMERS WHO SPENT THE MOST MONEY IN EACH YEAR
+```python
+query = """WITH customer_rank_data AS (SELECT year, customer, amount_spent,
+       DENSE_RANK() OVER(PARTITION BY year ORDER BY amount_spent DESC) AS customer_rank
+FROM (SELECT YEAR(o.order_purchase_timestamp) AS year,o.customer_id AS customer, SUM(p.payment_value) AS amount_spent
+FROM orders AS o
+JOIN payments AS p ON o.order_id = p.order_id
+GROUP BY year,o.customer_id
+ORDER BY year) AS speding_data)
+
+SELECT year, customer, amount_spent
+FROM customer_rank_data
+WHERE customer_rank <= 3;"""
+
+cur.execute(query)
+
+data = cur.fetchall()
+
+df = pd.DataFrame(data, columns = ["year","customer","amount spent"])
+
+plt.figure(figsize = (10,8))
+
+sns.set_style("dark")
+
+ax = sns.barplot(data = df, x = "customer", y = "amount spent", hue = "year", palette= "viridis")
+
+for container in ax.containers:
+    plt.bar_label(container, fmt = "%d", label_type= "edge", weight = "bold")
+
+plt.xticks(rotation = 90)
+
+plt.xlabel("Customer ID", fontsize = 15)
+plt.ylabel("Amount Spend By Customer", fontsize = 15)
+plt.title("Top 3 spending customer per year", fontsize = 20, fontweight = "bold")
+
+plt.grid(axis = "y", linestyle = "--", alpha = 0.7)
+
+plt.show()
+![image](https://github.com/user-attachments/assets/b58ff525-1649-4ebd-931b-40ca2f4d98a0)
+```
