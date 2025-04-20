@@ -1,24 +1,37 @@
 # e_commerce_project
 
 ## TABLE CONTENTS
-1. [PROJECT OVERVIEW](PROJECT-OVERVIEW)
-2. [PROJECT OBJECTIVE](PROJECT-OBJECTIVE)
-3. [DATABASE SCHEMA](DATABASE-SCHEMA)
-4. [SQL QUERIES](SQL-QUERIES)
-5. [JUPYTER CODE](JUPYTER-CODE)
-6. [KEY FINDINGS](KEY-FINDINGS)
-7. [REPOSITORY DETAILS](REPOSITORY-DETAILS)
+1. [PROJECT OVERVIEW](#PROJECT-OVERVIEW)
+2. [PROJECT OBJECTIVE](#PROJECT-OBJECTIVE)
+3. [DATABASE SCHEMA](#DATABASE-SCHEMA)
+4. [SQL QUERIES](#SQL-QUERIES)
+5. [JUPYTER CODE](#JUPYTER-CODE)
+6. [KEY FINDINGS](#KEY-FINDINGS)
+7. [REPOSITORY DETAILS](#REPOSITORY-DETAILS)
 
 ## 1. PROJECT OVERVIEW
-*   This project involves deep analysis of e_commerce dataset to derive meaningful
-    business insights using python, MySQL, and data visualization tools like Seaborn and matplotlib.
+*   This project is based on the Brazilian E-Commerce Public Dataset by Olist, which includes over 100,000 orders from 2016 to 2018, made across multiple marketplaces in 
+    Brazil. The dataset was made publicly available by Olist, a Brazilian e-commerce platform that connects small businesses to major online retail channels.
 
+    Using MySQL, and Python, this project aims to explore and analyze various aspects of the e-commerce business, including customer behavior, order trends, product 
+    performance, and seller contributions.
 
-## 2. PROJECT OBJECTIVE
-*    **Clean data** : Handle missing value, duplicates, and formatting using Python.
-*    **Upload data** : Load the cleaned dataset into MySQL 
-*    **Query data** : Use MySQL and Python for analysis
-*    **Visualize data** : Create graphs and charts using Seaborn and Matplotlib
+    The project focuses on turning raw transactional data into actionable business insights through structured SQL queries and Python.
+
+## 2. Project Objectives
+   The main objectives of this project include:
+
+*    Understanding customer purchasing patterns and retention rates
+
+*    Identifying top-selling products and revenue-driving categories
+
+*    Evaluating delivery time performance and its impact on customer satisfaction
+
+*    Ranking top sellers by revenue contribution
+
+*    Analyzing preferred payment methods and their impact on sales
+
+   Estimating sales growth over time (YoY trends and cumulative revenue)
 
 ## 3. DATABASE SCHEMA
 >  |**Table Name**|  **Column Name**|
