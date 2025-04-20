@@ -1,13 +1,13 @@
 # e_commerce_project
 
 ## TABLE CONTENTS
-1. [PROJECT OVERVIEW](#PROJECT-OVERVIEW)
+1. [PROJECT OVERVIEW](#project-overviw)
 2. [PROJECT OBJECTIVE](#PROJECT-OBJECTIVE)
 3. [DATABASE SCHEMA](#DATABASE-SCHEMA)
 4. [SQL QUERIES](#SQL-QUERIES)
 5. [JUPYTER CODE](#JUPYTER-CODE)
 6. [KEY FINDINGS](#KEY-FINDINGS)
-7. [REPOSITORY DETAILS](#REPOSITORY-DETAILS)
+7. [REPOSITORY DETAILS](#repository-details)
 
 ## 1. PROJECT OVERVIEW
 *   This project is based on the Brazilian E-Commerce Public Dataset by Olist, which includes over 100,000 orders from 2016 to 2018, made across multiple marketplaces in 
