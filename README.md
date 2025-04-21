@@ -31,7 +31,7 @@
 
 *    Analyzing preferred payment methods and their impact on sales
 
-   Estimating sales growth over time (YoY trends and cumulative revenue)
+*   Estimating sales growth over time (YoY trends and cumulative revenue)
 
 ## 3. DATABASE SCHEMA
 >  |**Table Name**|  **Column Name**|
@@ -362,16 +362,16 @@ plt.show()
 ![top 3 spending customer](https://raw.githubusercontent.com/Santosh96736/e_commerce_project/refs/heads/main/top%203%20spending%20customers.png)
 
 ## 6. KEY FINDINGS 
-*  i. **Orders placed in 2017** : 45101
-*  ii. **Percentage paid via credit card** : 73.92%
-*  iii. **Correlation between Price-Purchases** : -0.10
-*  iv. **Year-Over-Year Growth Rate** : 12112.70% (2017), 20.00% (2018)
-*  v. **Retetion Rate** : 0
+*  **Orders placed in 2017** : 45101
+*  **Percentage paid via credit card** : 73.92%
+*  **Correlation between Price-Purchases** : -0.10
+*  **Year-Over-Year Growth Rate** : 12112.70% (2017), 20.00% (2018)
+*  **Retetion Rate** : 0
 
 ## 7. REPOSITORY DETAILS
-*  i. **Repository Name** : e_commerce_project
-*  ii. **Download Dataset** : [e-Commerce (Target) Sales Dataset - Kaggle](https://www.kaggle.com/datasets/ujjwalinsights/target-case-study-using-sql)
-*  iii. **All SQL Queries** : [ecommerce_project.sql](https://github.com/Santosh96736/e_commerce_project/blob/main/ecommer_project.sql)
-*  iv. **All Python Codes** : [ecommerce_project_code.ipynb](https://github.com/Santosh96736/e_commerce_project/blob/main/ecommerce_project_code.ipynb)
-*  v. **Contact** : [santosh kumar sahu](santosh96736@gmail.com)
+*  **Repository Name** : e_commerce_project
+*  **Download Dataset** : [e-Commerce (Target) Sales Dataset - Kaggle](https://www.kaggle.com/datasets/ujjwalinsights/target-case-study-using-sql)
+*  **All SQL Queries** : [ecommerce_project.sql](https://github.com/Santosh96736/e_commerce_project/blob/main/ecommer_project.sql)
+*  **All Python Codes** : [ecommerce_project_code.ipynb](https://github.com/Santosh96736/e_commerce_project/blob/main/ecommerce_project_code.ipynb)
+*  **Contact** : [santosh kumar sahu](santosh96736@gmail.com)
 
