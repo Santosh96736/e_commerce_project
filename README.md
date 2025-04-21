@@ -1,4 +1,5 @@
-# e_commerce_project
+# 🛒 E-Commerce Sales Analysis (Target Brazil)
+Analyzing 100K+ orders from a leading Brazilian marketplace using SQL & Python
 
 ## TABLE CONTENTS
 1. [PROJECT OVERVIEW](#1-Project-overview)
