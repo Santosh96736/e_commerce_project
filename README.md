@@ -1,15 +1,15 @@
 # e_commerce_project
 
 ## TABLE CONTENTS
-1. [PROJECT OVERVIEW](#Project-overview)
-2. [TECH STACK](#Tech-Stack)
-3. [PROJECT OBJECTIVE](#Project-Objective)
-4. [DATABASE SCHEMA](#Database-Schema)
-5. [SQL QUERIES](#SQL-Queries)
-6. [JUPYTER CODE](#Jupter-Code)
-7. [KEY FINDINGS](#Key-Findings)
-8. [SUGGESTION AND RECOMMENDATION](#Suggestion-and-Recommendation)
-9. [CONTACT](#Contact)
+1. [PROJECT OVERVIEW](#1-Project-overview)
+2. [TECH STACK](#2-Tech-Stack)
+3. [PROJECT OBJECTIVE](#3-Project-Objective)
+4. [DATABASE SCHEMA](#4-Database-Schema)
+5. [SQL QUERIES](#5-SQL-Queries)
+6. [JUPYTER CODE](#6-Jupter-Code)
+7. [KEY FINDINGS](#7-Key-Findings)
+8. [SUGGESTION AND RECOMMENDATION](#8-Suggestion-and-Recommendation)
+9. [CONTACT](#9-Contact)
 
 
 ## 1. Project Overview
