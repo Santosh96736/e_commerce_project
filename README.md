@@ -8,10 +8,11 @@
 5. [JUPYTER CODE](#JUPYTER-CODE)
 6. [KEY FINDINGS](#KEY-FINDINGS)
 7. [Suggestion & Recommendations](#SUGGESTION-&-RECOMMENDATIONS)
+8. [Contact](#CONTACT)
 
 
 ## 1. PROJECT OVERVIEW
-*   This project is based on the Brazilian E-Commerce Public Dataset by Olist, which includes over 100,000 orders from 2016 to 2018, made across multiple marketplaces in 
+-   This project is based on the Brazilian E-Commerce Public Dataset by Olist, which includes over 100,000 orders from 2016 to 2018, made across multiple marketplaces in 
     Brazil. The dataset was made publicly available by Olist, a Brazilian e-commerce platform that connects small businesses to major online retail channels.
 
     Using MySQL, and Python, this project aims to explore and analyze various aspects of the e-commerce business, including customer behavior, order trends, product 
@@ -19,7 +20,7 @@
 
     The project focuses on turning raw transactional data into actionable business insights through structured SQL queries and Python.
 
-    To download the dataset click here : [e-Commerce (Target) Sales Dataset - Kaggle](https://www.kaggle.com/datasets/ujjwalinsights/target-case-study-using-sql)
+-   To download the dataset click here : [e-Commerce (Target) Sales Dataset - Kaggle](https://www.kaggle.com/datasets/ujjwalinsights/target-case-study-using-sql)
 
 ## 2. Project Objectives
 
@@ -134,7 +135,7 @@ A comprehensive schema diagram was created in MySQL Workbench, with primary and 
     ORDER BY year, month_number,month_name) AS sales_value_data;
     ```
 
-   Download SQL Queries & Schema : [ecommerce_project.sql](https://github.com/Santosh96736/e_commerce_project/blob/main/ecommer_project.sql)
+-  Download SQL Queries & Schema : [ecommerce_project.sql](https://github.com/Santosh96736/e_commerce_project/blob/main/ecommer_project.sql)
 
 ## 5. Jupyter Code
 
@@ -148,7 +149,7 @@ A comprehensive schema diagram was created in MySQL Workbench, with primary and 
 
 -  Queried the database using Python and visualized results using Seaborn and Matplotlib.
 
-   Download Jupyter Codes : [ecommerce_project_code.ipynb](https://github.com/Santosh96736/e_commerce_project/blob/main/ecommerce_project_code.ipynb)
+-  Download Jupyter Codes : [ecommerce_project_code.ipynb](https://github.com/Santosh96736/e_commerce_project/blob/main/ecommerce_project_code.ipynb)
 
 ## 6. KEY FINDINGS 
 
@@ -162,7 +163,7 @@ A comprehensive schema diagram was created in MySQL Workbench, with primary and 
 
 -   Growth Rate:  2017 - 12112.70%, 2018 - 20.00%
 
-## 7. Suggestion and Recommendations
+## 7. SUGGESTION AND RECOMMENDATIONS
 
 -  Boost Customer Retention : Implement loyalty programs, follow-ups, and personalized offers. Encourage second purchases via targeted campaigns.
 
@@ -170,6 +171,9 @@ A comprehensive schema diagram was created in MySQL Workbench, with primary and 
 
 -  Track Returns & Refunds: Integrate return/refund data to measure product satisfaction and improve services.
 
+## 8. CONTACT
 
+-  LINKEDIN : [Santosh Kumar Sahu](https://www.linkedin.com/in/santosh-kumar-sahu-data-analyst)
+-  EMAIL : [santosh96736@gamil.com](santosh96736@gmail.com)
 
 
