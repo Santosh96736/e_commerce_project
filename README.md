@@ -159,9 +159,13 @@ A comprehensive schema diagram was created in MySQL Workbench, with primary and 
 
 -  Customer Locations: Sao Paulo and Rio de Janeiro had the highest number of customers.
 
+
+
 -  Payment Preferences: 73.92% of orders were paid via credit card.
 
 -   Growth Rate:  2017 - 12112.70%, 2018 - 20.00%
+   
+![Image](https://github.com/Santosh96736/e_commerce_project/blob/main/Year_Over_Yera_Growth.png)
 
 ## 7. Suggestion and Recommendation
 
