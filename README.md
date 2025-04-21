@@ -1,17 +1,17 @@
 # e_commerce_project
 
 ## TABLE CONTENTS
-1. [PROJECT OVERVIEW](#PROJECT-OVERVIEW)
-2. [PROJECT OBJECTIVE](#PROJECT-OBJECTIVE)
-3. [DATABASE SCHEMA](#DATABASE-SCHEMA)
-4. [SQL QUERIES](#SQL-QUERIES)
-5. [JUPYTER CODE](#JUPYTER-CODE)
-6. [KEY FINDINGS](#KEY-FINDINGS)
-7. [Suggestion & Recommendations](#SUGGESTION-&-RECOMMENDATIONS)
-8. [Contact](#CONTACT)
+1. [PROJECT OVERVIEW](#Project-overview)
+2. [PROJECT OBJECTIVE](#Project-Objective)
+3. [DATABASE SCHEMA](#Database-Schema)
+4. [SQL QUERIES](#SQL-Queries)
+5. [JUPYTER CODE](#Jupter-Code)
+6. [KEY FINDINGS](#Key-Findings)
+7. [SUGGESTION AND RECOMMENDATION](#Suggestion-and-Recommendation)
+8. [CONTACT](#Contact)
 
 
-## 1. PROJECT OVERVIEW
+## 1. Project Overview
 -   This project is based on the Brazilian E-Commerce Public Dataset by Olist, which includes over 100,000 orders from 2016 to 2018, made across multiple marketplaces in 
     Brazil. The dataset was made publicly available by Olist, a Brazilian e-commerce platform that connects small businesses to major online retail channels.
 
@@ -30,7 +30,7 @@
 - Evaluate payment methods and financial metrics.
 - Detect patterns in customer purchases and retention.
 
-## 3. DATABASE SCHEMA
+## 3. Database Schema
 The dataset includes the following tables:
 
 - `customers`
@@ -45,7 +45,7 @@ The dataset includes the following tables:
   
 A comprehensive schema diagram was created in MySQL Workbench, with primary and foreign keys declared across all tables.
 
-## 4. SQL QUERIES
+## 4. SQL Queries
 
 ### CREATE DATABASE
 
@@ -149,9 +149,9 @@ A comprehensive schema diagram was created in MySQL Workbench, with primary and 
 
 -  Queried the database using Python and visualized results using Seaborn and Matplotlib.
 
--  Download Jupyter Codes : [ecommerce_project_code.ipynb](https://github.com/Santosh96736/e_commerce_project/blob/main/ecommerce_project_code.ipynb)
+-  Download Jupyter Code : [ecommerce_project_code.ipynb](https://github.com/Santosh96736/e_commerce_project/blob/main/ecommerce_project_code.ipynb)
 
-## 6. KEY FINDINGS 
+## 6. Key Findings 
 
 -  Sales Trends: Most orders were placed in 2017, peaking in November due to Black Friday sales.
 
@@ -163,7 +163,7 @@ A comprehensive schema diagram was created in MySQL Workbench, with primary and 
 
 -   Growth Rate:  2017 - 12112.70%, 2018 - 20.00%
 
-## 7. SUGGESTION AND RECOMMENDATIONS
+## 7. Suggestion and Recommendation
 
 -  Boost Customer Retention : Implement loyalty programs, follow-ups, and personalized offers. Encourage second purchases via targeted campaigns.
 
@@ -171,9 +171,9 @@ A comprehensive schema diagram was created in MySQL Workbench, with primary and 
 
 -  Track Returns & Refunds: Integrate return/refund data to measure product satisfaction and improve services.
 
-## 8. CONTACT
+## 8. Contact
 
 -  LINKEDIN : [Santosh Kumar Sahu](https://www.linkedin.com/in/santosh-kumar-sahu-data-analyst)
--  EMAIL : [santosh96736@gamil.com](santosh96736@gmail.com)
+-  EMAIL : [santosh96736@gmail.com](santosh96736@gmail.com)
 
 
