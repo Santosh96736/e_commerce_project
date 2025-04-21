@@ -2,13 +2,14 @@
 
 ## TABLE CONTENTS
 1. [PROJECT OVERVIEW](#Project-overview)
-2. [PROJECT OBJECTIVE](#Project-Objective)
-3. [DATABASE SCHEMA](#Database-Schema)
-4. [SQL QUERIES](#SQL-Queries)
-5. [JUPYTER CODE](#Jupter-Code)
-6. [KEY FINDINGS](#Key-Findings)
-7. [SUGGESTION AND RECOMMENDATION](#Suggestion-and-Recommendation)
-8. [CONTACT](#Contact)
+2. [TECH STACK](#Tech-Stack)
+3. [PROJECT OBJECTIVE](#Project-Objective)
+4. [DATABASE SCHEMA](#Database-Schema)
+5. [SQL QUERIES](#SQL-Queries)
+6. [JUPYTER CODE](#Jupter-Code)
+7. [KEY FINDINGS](#Key-Findings)
+8. [SUGGESTION AND RECOMMENDATION](#Suggestion-and-Recommendation)
+9. [CONTACT](#Contact)
 
 
 ## 1. Project Overview
@@ -22,7 +23,14 @@
 
 -   To download the dataset click here : [e-Commerce (Target) Sales Dataset - Kaggle](https://www.kaggle.com/datasets/ujjwalinsights/target-case-study-using-sql)
 
-## 2. Project Objectives
+## 2. Tech Stack
+
+- **Languages:** SQL, Python
+- **Database:** MySQL
+- **Python Libraries:** Pandas, Matplotlib, Seaborn, SQLAlchemy
+- **Tools:** Jupyter Notebook, MySQL Workbench
+
+## 3. Project Objectives
 
 - Understand order volume, revenue, and trends over time.
 - Identify top-performing product categories and sellers.
@@ -30,7 +38,7 @@
 - Evaluate payment methods and financial metrics.
 - Detect patterns in customer purchases and retention.
 
-## 3. Database Schema
+## 4. Database Schema
 The dataset includes the following tables:
 
 - `customers`
@@ -45,7 +53,7 @@ The dataset includes the following tables:
   
 A comprehensive schema diagram was created in MySQL Workbench, with primary and foreign keys declared across all tables.
 
-## 4. SQL Queries
+## 5. SQL Queries
 
 ### CREATE DATABASE
 
@@ -137,7 +145,7 @@ A comprehensive schema diagram was created in MySQL Workbench, with primary and 
 
 -  Download SQL Queries & Schema : [ecommerce_project.sql](https://github.com/Santosh96736/e_commerce_project/blob/main/ecommer_project.sql)
 
-## 5. Jupyter Code
+## 6. Jupyter Code
 
 -  Using Jupyter Notebook, the following steps were performed using Python, Pandas, Seaborn, and Matplotlib:
 
@@ -151,7 +159,7 @@ A comprehensive schema diagram was created in MySQL Workbench, with primary and 
 
 -  Download Jupyter Code : [ecommerce_project_code.ipynb](https://github.com/Santosh96736/e_commerce_project/blob/main/ecommerce_project_code.ipynb)
 
-## 6. Key Findings 
+## 7. Key Findings 
 
 -  Sales Trends: Most orders were placed in 2017, peaking in November due to Black Friday sales.
 
@@ -159,7 +167,7 @@ A comprehensive schema diagram was created in MySQL Workbench, with primary and 
 
 -  Customer Locations: Sao Paulo and Rio de Janeiro had the highest number of customers.
 
-
+![Image](https://github.com/Santosh96736/e_commerce_project/blob/main/Top%2010%20most%20customer%20city.png)
 
 -  Payment Preferences: 73.92% of orders were paid via credit card.
 
@@ -167,7 +175,7 @@ A comprehensive schema diagram was created in MySQL Workbench, with primary and 
    
 ![Image](https://github.com/Santosh96736/e_commerce_project/blob/main/Year_Over_Yera_Growth.png)
 
-## 7. Suggestion and Recommendation
+## 8. Suggestion and Recommendation
 
 -  Boost Customer Retention : Implement loyalty programs, follow-ups, and personalized offers. Encourage second purchases via targeted campaigns.
 
@@ -175,7 +183,7 @@ A comprehensive schema diagram was created in MySQL Workbench, with primary and 
 
 -  Track Returns & Refunds: Integrate return/refund data to measure product satisfaction and improve services.
 
-## 8. Contact
+## 9. Contact
 
 -  LINKEDIN : [Santosh Kumar Sahu](https://www.linkedin.com/in/santosh-kumar-sahu-data-analyst)
 -  EMAIL : [santosh96736@gmail.com](santosh96736@gmail.com)
