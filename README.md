@@ -19,33 +19,27 @@
     The project focuses on turning raw transactional data into actionable business insights through structured SQL queries and Python.
 
 ## 2. Project Objectives
-   The main objectives of this project include:
 
-*    Understanding customer purchasing patterns and retention rates
-
-*    Identifying top-selling products and revenue-driving categories
-
-*    Evaluating delivery time performance and its impact on customer satisfaction
-
-*    Ranking top sellers by revenue contribution
-
-*    Analyzing preferred payment methods and their impact on sales
-
-*   Estimating sales growth over time (YoY trends and cumulative revenue)
+- Understand order volume, revenue, and trends over time.
+- Identify top-performing product categories and sellers.
+- Analyze delivery performance and delays.
+- Evaluate payment methods and financial metrics.
+- Detect patterns in customer purchases and retention.
 
 ## 3. DATABASE SCHEMA
->  |**Table Name**|  **Column Name**|
->  |--------------|-----------------|
->  | **Customer** | `customer_id`, `customer_unique_id` , `customer_zip_code_prefix`, `customer_city`, `customer_state`|
->  | **Geolocation** | `geolocation_zip_code_prefix` , `geolocation_lat`, `geolocation_lng`, `geolocation_city`, `geolocation_state`|
->  | **Order_Items** | `order_id`, `order_item_id`, `product_id`, `seller_id`, `shipping_limit_date`, `price`, `freight_value`|
->  | **Order_Reviews** | `review_id`, `order_id`, `review_score`, `review_comment_title`, `review_creation_date`, `review_answer_timestamp`|
->  | **Orders** | `order_id`, `customer_id`, `order_status`, `order_purchase_timestamp`, `order_approved_at`,|  
->  |            |   `order_delivered_carrier_date`, `order_delivered_customer_date`, `order_estimated_delivery_date`|
->  | **Payments** | `order_id`, `payment_sequential`, `payment_type`, `payment_installments`, `payment_value`|
->  | **Products** | `product_id`, `product_category`, `product_name_length`, `product_description_length`, `product_photos_qty`,
->  |              | `product_weight_g`, `product_length_cm`, `product_height_cm`, `product_width_cm`|
->  | **Sellers** | `seller_id`, `seller_zip_code_prefix`, `seller_city`, `seller_state`
+The dataset includes the following tables:
+
+- `customers`
+- `orders`
+- `order_items`
+- `order_payments`
+- `order_reviews`
+- `products`
+- `sellers`
+- `product_category_name_translation`
+- `geolocation`
+  
+A comprehensive schema diagram was created in MySQL Workbench, with primary and foreign keys declared across all tables.
 
 ## 4. SQL QUERIES
 
@@ -137,236 +131,32 @@
     ORDER BY year, month_number,month_name) AS sales_value_data;
     ```
 
-## 5. JUPYTER CODE
+## 5. Jupyter Code
+-  Using Jupyter Notebook, the following steps were performed using Python, Pandas, Seaborn, and Matplotlib:
 
-### DATA CLEANING
+-  Loaded all CSV files and performed data cleaning.
 
-```python
-# Cleaning Orders & Customers Data
-# - Remove duplicates
-# - Handle missing values
-# - Convert date formats
+-  Exported cleaned DataFrames like cleaned_customers.csv.
 
-import pandas as pd
+-  Used SQLAlchemy to upload cleaned data into MySQL.
 
-# Load Dataset
-df_orders = pd.read_csv("orders.csv")
-df_customers = pd.read_csv("customers.csv")
-
-# Convert relevant columns to datetime format
-
-df_orders["order_purchase_timestamp"] = pd.to_datetime(df_orders["order_purchase_timestamp"])
-df_orders["order_approved_at"] = pd.to_datetime(df_orders["order_approved_at"])
-df_orders["order_delivered_carrier_date"] = pd.to_datetime(df_orders["order_delivered_carrier_date"])
-df_orders["order_delivered_customer_date"] = pd.to_datetime(df_orders["order_delivered_customer_date"])
-df_orders["order_estimated_delivery_date"] = pd.to_datetime(df_orders["order_estimated_delivery_date"])
-
-# Function to check dataset summary
-def check_dataset(df, name):
-    print("\n" + "=" * 60)
-    print(f"Dataset Summary: {name}")
-    print("=" * 60)
-
-    print(f"\n Missing Values:\n{df.isnull().sum()}")
-    print(f"\n Duplicate Rows: {df.duplicated().sum()}")
-    
-    print("\n Dataset Info:")
-    df.info()
-    
-    print("\n Statistical Summary:")
-    print(df.describe())
-
-
-# Check orders dataset
-check_dataset(df_orders, "Orders")
-
-# Checking Null Values where order_status == "shipped"
-shipped_missing = df_orders[df_orders["order_status"] == "shipped"].isnull().sum()
-print("\nMissing values in 'shipped' orders:")
-print(shipped_missing)
-
-# Fill missing "order_delivered_customer_date" with "order_estimated_delivery_date" only for shipped orders
-df_orders.loc[(df_orders["order_status"] == "shipped") & 
-              (df_orders["order_delivered_customer_date"].isnull()), 
-              "order_delivered_customer_date"] = df_orders["order_estimated_delivery_date"]
-
-# Re-check missing values to confirm they are correctly filled
-shipped_missing_after = df_orders[df_orders["order_status"] == "shipped"].isnull().sum()
-print("\nMissing values in 'shipped' orders after filling:")
-print(shipped_missing_after)
-
-# Upload cleaned "df_orders" into "cleaned_orders.csv"
-df_orders.to_csv("cleaned_orders.csv", index= False)
-
-print("\n" + "-" * 60)
-
-# Check customers dataset
-check_dataset(df_customers, "Customers")
-
-# Upload cleaned "df_customers" into "cleaned_customer.csv"
-df_customers.to_csv("cleaned_customers.csv", index= False)
-
-print("\n" + "-" * 60)
-```
-
-### UPLOADING DATA INTO MYSQL
-```python
-import pandas as pd
-import mysql.connector
-import os
-from dotenv import load_dotenv
-
-load_dotenv()
-
-# List of CSV files and their corresponding table names
-csv_files = [
-    ('cleaned_customers.csv', 'customers'),
-    ('cleaned_orders.csv', 'orders'),
-    ('cleaned_sellers.csv', 'sellers'),
-    ('cleaned_products.csv', 'products'),
-    ('cleaned_order_items.csv', 'order_items'),
-    ('cleaned_payments.csv', 'payments'),
-    ('cleaned_geolocation.csv', 'geolocation'),
-    ('cleaned_order_reviews.csv', 'order_reviews')
-]
-
-# Connect to the MySQL database
-conn = mysql.connector.connect(
-    host= os.getenv("DB_HOST"),
-    user= os.getenv("DB_USER"),
-    password= os.getenv("DB_PASSWORD"),
-    database= os.getenv("DB_NAME")
-)
-cursor = conn.cursor()
-
-# Folder containing the CSV files
-folder_path = 'D:/E_Commerce_Project'
-
-# Function to determine SQL data type
-def get_sql_type(column_name, dtype):
-    if "geolocation_lat" in column_name or "geolocation_lng" in column_name:
-        return 'DECIMAL(18,15)'  # High precision for latitude & longitude
-    elif pd.api.types.is_integer_dtype(dtype):
-        return 'INT'
-    elif pd.api.types.is_float_dtype(dtype):
-        return 'DECIMAL(10,2)'  # General decimal format for prices, weights, etc.
-    elif pd.api.types.is_datetime64_any_dtype(dtype):
-        return 'DATETIME'
-    else:
-        return 'VARCHAR(50)'  # Default VARCHAR
-
-# Process each CSV file
-for csv_file, table_name in csv_files:
-    file_path = os.path.join(folder_path, csv_file)
-    
-    # Read the CSV file into a pandas DataFrame
-    df = pd.read_csv(file_path)
-    
-    # Replace NaN with None to handle SQL NULL values
-    df = df.where(pd.notnull(df), None)
-
-    # Debugging: Check for NaN values
-    print(f"Processing {csv_file}")
-    print(f"NaN values before replacement:\n{df.isnull().sum()}\n")
-
-    # Clean column names to match MySQL naming conventions
-    df.columns = [col.replace(' ', '_').replace('-', '_').replace('.', '_') for col in df.columns]
-
-    # Convert ENUM columns to lowercase and validate values
-    if 'order_status' in df.columns:
-        df['order_status'] = df['order_status'].str.lower().str.strip()
-        valid_status = {'delivered', 'invoiced', 'shipped', 'processing', 'unavailable', 'canceled', 'created', 'approved'}
-        df = df[df['order_status'].isin(valid_status)]  # Remove invalid values
-
-    if 'payment_type' in df.columns:
-        df['payment_type'] = df['payment_type'].str.lower().str.strip()
-        valid_payment = {'credit_card', 'upi', 'voucher', 'debit_card', 'not_defined'}
-        df = df[df['payment_type'].isin(valid_payment)]
-
-    # Insert DataFrame data into the MySQL table
-    for _, row in df.iterrows():
-        values = tuple(None if pd.isna(x) else x for x in row)
-        sql = f"INSERT INTO `{table_name}` ({', '.join(['`' + col + '`' for col in df.columns])}) VALUES ({', '.join(['%s'] * len(row))})"
-        
-        try:
-            cursor.execute(sql, values)
-        except mysql.connector.Error as err:
-            print(f"Error inserting into {table_name}: {err}")
-    
-    # Commit the transaction for the current CSV file
-    conn.commit()
-
-# Close the connection
-conn.close()
-print("✅ Data Upload Completed Successfully!")
-```
-
-### CONNECTING TO MySQL
-```python
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
-import mysql.connector
-import os
-from dotenv import load_dotenv
-
-load_dotenv()
-
-mydb = mysql.connector.connect(host = os.getenv("DB_HOST"),
-                               user = os.getenv("DB_USER"),
-                               password = os.getenv("DB_PASSWORD"),
-                               database = os.getenv("DB_NAME"))
-
-cur = mydb.cursor()
-```
-
-### IDENTIFY THE TOP 3 CUSTOMERS WHO SPENT THE MOST MONEY IN EACH YEAR
-```python
-query = """WITH customer_rank_data AS (SELECT year, customer, amount_spent,
-       DENSE_RANK() OVER(PARTITION BY year ORDER BY amount_spent DESC) AS customer_rank
-FROM (SELECT YEAR(o.order_purchase_timestamp) AS year,o.customer_id AS customer, SUM(p.payment_value) AS amount_spent
-FROM orders AS o
-JOIN payments AS p ON o.order_id = p.order_id
-GROUP BY year,o.customer_id
-ORDER BY year) AS speding_data)
-
-SELECT year, customer, amount_spent
-FROM customer_rank_data
-WHERE customer_rank <= 3;"""
-
-cur.execute(query)
-
-data = cur.fetchall()
-
-df = pd.DataFrame(data, columns = ["year","customer","amount spent"])
-
-plt.figure(figsize = (10,8))
-
-sns.set_style("dark")
-
-ax = sns.barplot(data = df, x = "customer", y = "amount spent", hue = "year", palette= "viridis")
-
-for container in ax.containers:
-    plt.bar_label(container, fmt = "%d", label_type= "edge", weight = "bold")
-
-plt.xticks(rotation = 90)
-
-plt.xlabel("Customer ID", fontsize = 15)
-plt.ylabel("Amount Spent By Customer", fontsize = 15)
-plt.title("Top 3 spending customer per year", fontsize = 20, fontweight = "bold")
-
-plt.grid(axis = "y", linestyle = "--", alpha = 0.7)
-
-plt.show()
-```
-![top 3 spending customer](https://raw.githubusercontent.com/Santosh96736/e_commerce_project/refs/heads/main/top%203%20spending%20customers.png)
+-  Queried the database using Python and visualized results using Seaborn and Matplotlib.
 
 ## 6. KEY FINDINGS 
-*  **Orders placed in 2017** : 45101
-*  **Percentage paid via credit card** : 73.92%
-*  **Correlation between Price-Purchases** : -0.10
-*  **Year-Over-Year Growth Rate** : 12112.70% (2017), 20.00% (2018)
-*  **Retetion Rate** : 0
+Sales Trends: Most orders were placed in 2017, peaking in November due to Black Friday sales.
+
+Top Categories: 'bed_bath_table', 'health_beauty', and 'sports_leisure' generated the most revenue.
+
+Customer Locations: São Paulo and Rio de Janeiro had the highest number of customers.
+
+Delivery Delays: Over 60% of orders were delivered late compared to estimated delivery dates.
+
+Payment Methods: Majority of customers preferred credit card payments.
+Orders placed in 2017 : 45101
+Percentage paid via credit card : 73.92%
+Correlation between Price-Purchases : -0.10
+Year-Over-Year Growth Rate : 12112.70% (2017), 20.00% (2018)
+Retetion Rate : 0
 
 ## 7. REPOSITORY DETAILS
 *  **Repository Name** : e_commerce_project
