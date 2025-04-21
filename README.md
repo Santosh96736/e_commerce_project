@@ -1,13 +1,14 @@
 # e_commerce_project
 
 ## TABLE CONTENTS
-1. [PROJECT OVERVIEW](#project-overviw)
+1. [PROJECT OVERVIEW](#PROJECT-OVERVIEW)
 2. [PROJECT OBJECTIVE](#PROJECT-OBJECTIVE)
 3. [DATABASE SCHEMA](#DATABASE-SCHEMA)
 4. [SQL QUERIES](#SQL-QUERIES)
 5. [JUPYTER CODE](#JUPYTER-CODE)
 6. [KEY FINDINGS](#KEY-FINDINGS)
-7. [REPOSITORY DETAILS](#repository-details)
+7. [Suggestion & Recommendations](#SUGGESTION-&-RECOMMENDATIONS)
+
 
 ## 1. PROJECT OVERVIEW
 *   This project is based on the Brazilian E-Commerce Public Dataset by Olist, which includes over 100,000 orders from 2016 to 2018, made across multiple marketplaces in 
@@ -17,6 +18,8 @@
     performance, and seller contributions.
 
     The project focuses on turning raw transactional data into actionable business insights through structured SQL queries and Python.
+
+    To download the dataset click here : [e-Commerce (Target) Sales Dataset - Kaggle](https://www.kaggle.com/datasets/ujjwalinsights/target-case-study-using-sql)
 
 ## 2. Project Objectives
 
@@ -131,7 +134,10 @@ A comprehensive schema diagram was created in MySQL Workbench, with primary and 
     ORDER BY year, month_number,month_name) AS sales_value_data;
     ```
 
+   Download SQL Queries & Schema : [ecommerce_project.sql](https://github.com/Santosh96736/e_commerce_project/blob/main/ecommer_project.sql)
+
 ## 5. Jupyter Code
+
 -  Using Jupyter Notebook, the following steps were performed using Python, Pandas, Seaborn, and Matplotlib:
 
 -  Loaded all CSV files and performed data cleaning.
@@ -142,26 +148,28 @@ A comprehensive schema diagram was created in MySQL Workbench, with primary and 
 
 -  Queried the database using Python and visualized results using Seaborn and Matplotlib.
 
+   Download Jupyter Codes : [ecommerce_project_code.ipynb](https://github.com/Santosh96736/e_commerce_project/blob/main/ecommerce_project_code.ipynb)
+
 ## 6. KEY FINDINGS 
-Sales Trends: Most orders were placed in 2017, peaking in November due to Black Friday sales.
 
-Top Categories: 'bed_bath_table', 'health_beauty', and 'sports_leisure' generated the most revenue.
+-  Sales Trends: Most orders were placed in 2017, peaking in November due to Black Friday sales.
 
-Customer Locations: São Paulo and Rio de Janeiro had the highest number of customers.
+-  Top Categories: 'bed_bath_table', 'health_beauty', and 'sports_leisure' generated the most revenue.
 
-Delivery Delays: Over 60% of orders were delivered late compared to estimated delivery dates.
+-  Customer Locations: Sao Paulo and Rio de Janeiro had the highest number of customers.
 
-Payment Methods: Majority of customers preferred credit card payments.
-Orders placed in 2017 : 45101
-Percentage paid via credit card : 73.92%
-Correlation between Price-Purchases : -0.10
-Year-Over-Year Growth Rate : 12112.70% (2017), 20.00% (2018)
-Retetion Rate : 0
+-  Payment Preferences: 73.92% of orders were paid via credit card.
 
-## 7. REPOSITORY DETAILS
-*  **Repository Name** : e_commerce_project
-*  **Download Dataset** : [e-Commerce (Target) Sales Dataset - Kaggle](https://www.kaggle.com/datasets/ujjwalinsights/target-case-study-using-sql)
-*  **All SQL Queries** : [ecommerce_project.sql](https://github.com/Santosh96736/e_commerce_project/blob/main/ecommer_project.sql)
-*  **All Python Codes** : [ecommerce_project_code.ipynb](https://github.com/Santosh96736/e_commerce_project/blob/main/ecommerce_project_code.ipynb)
-*  **Contact** : [santosh kumar sahu](santosh96736@gmail.com)
+-   Growth Rate:  2017 - 12112.70%, 2018 - 20.00%
+
+## 7. Suggestion and Recommendations
+
+-  Boost Customer Retention : Implement loyalty programs, follow-ups, and personalized offers. Encourage second purchases via targeted campaigns.
+
+- Optimize Product Portfolio: Focus on top-performing categories; reevaluate or promote underperformers. Use reviews and ratings for product quality feedback.
+
+-  Track Returns & Refunds: Integrate return/refund data to measure product satisfaction and improve services.
+
+
+
 
